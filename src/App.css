@@ -54,7 +54,7 @@
 	 height: 350px;
 }
 
-.minute, .heure {
+#best-minute, #best-heure {
 	 position: absolute;
 	 height: 100px; width: 6px;
 	 margin: auto;
@@ -65,7 +65,7 @@
      background: black;
 }
 
-.minute {
+#best-minute {
 	 position: absolute;
 	 height: 130px;
 	 width: 4px;
@@ -75,7 +75,43 @@
 	 transform: rotate(90deg);
 }
 
-.seconde {
+#best-seconde {
+	 position: absolute;
+	 height: 90px;
+	 width: 2px;
+	 margin: auto;
+	 top: -26%;
+	 left: 0;
+	 bottom: 0;
+	 right: 0;
+	 border-radius: 4px;
+	 background: #ff4b3e;
+	 transform-origin: bottom center;
+	 transform: rotate(180deg);
+}
+
+#minute, #heure {
+	 position: absolute;
+	 height: 100px; width: 6px;
+	 margin: auto;
+	 top: -27%; left: 0;	bottom: 0; right: 0;
+	 transform-origin: bottom center;
+	 transform: rotate(0deg);
+	 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+     background: black;
+}
+
+#minute {
+	 position: absolute;
+	 height: 130px;
+	 width: 4px;
+	 top: -38%;
+	 left: 0;
+	 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+	 transform: rotate(90deg);
+}
+
+#seconde {
 	 position: absolute;
 	 height: 90px;
 	 width: 2px;
@@ -105,6 +141,66 @@
 	 margin: auto;
 }
 
+#best-h12{
+    -webkit-transform: translate(0px, -150px);
+    -o-transform: translate(0px, -150px);
+    transform: translate(0px, -150px);
+}
+#best-h14{
+    -webkit-transform: rotate(30deg) translate(0px, -150px);
+    -o-transform: rotate(30deg) translate(0px, -150px);
+    transform: rotate(30deg) translate(0px, -150px);
+}
+#best-h16{
+    -webkit-transform: rotate(60deg) translate(0px, -150px);
+    -o-transform: rotate(60deg) translate(0px, -150px);
+    transform: rotate(60deg) translate(0px, -150px);
+}
+#best-h18{
+    -webkit-transform: rotate(90deg) translate(0px, -150px);
+    -o-transform: rotate(90deg) translate(0px, -150px);
+    transform: rotate(90deg) translate(0px, -150px);
+}
+#best-h20{
+    -webkit-transform: rotate(120deg) translate(0px, -150px);
+    -o-transform: rotate(120deg) translate(0px, -150px);
+    transform: rotate(120deg) translate(0px, -150px);
+}
+#best-h22{
+    -webkit-transform: rotate(150deg) translate(0px, -150px);
+    -o-transform: rotate(150deg) translate(0px, -150px);
+    transform: rotate(150deg) translate(0px, -150px);
+}
+#best-h24{
+    -webkit-transform: rotate(180deg) translate(0px, -150px);
+    -o-transform: rotate(180deg) translate(0px, -150px);
+    transform: rotate(180deg) translate(0px, -150px);
+}
+#best-h2{
+    -webkit-transform: rotate(210deg) translate(0px, -150px);
+    -o-transform: rotate(210deg) translate(0px, -150px);
+    transform: rotate(210deg) translate(0px, -150px);
+}
+#best-h4{
+    -webkit-transform: rotate(240deg) translate(0px, -150px);
+    -o-transform: rotate(240deg) translate(0px, -150px);
+    transform: rotate(240deg) translate(0px, -150px);
+}
+#best-h6{
+    -webkit-transform: rotate(270deg) translate(0px, -150px);
+    -o-transform: rotate(270deg) translate(0px, -150px);
+    transform: rotate(270deg) translate(0px, -150px);
+}
+#best-h8{
+    -webkit-transform: rotate(300deg) translate(0px, -150px);
+    -o-transform: rotate(300deg) translate(0px, -150px);
+    transform: rotate(300deg) translate(0px, -150px);
+}
+#best-h10{
+    -webkit-transform: rotate(330deg) translate(0px, -150px);
+    -o-transform: rotate(330deg) translate(0px, -150px);
+    transform: rotate(330deg) translate(0px, -150px);
+}
 #h0{
     -webkit-transform: translate(0px, -150px);
     -o-transform: translate(0px, -150px);
