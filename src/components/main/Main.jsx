@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { QuizContext } from '../../helpers/Contexts';
-import { FaHome } from "react-icons/fa"
 import { Questions } from "../../helpers/Questions";
 
 import './Main.css';
@@ -14,9 +13,18 @@ const Main = () => {
 
     const { questions, setQuestions } = useContext(QuizContext);
     const { gameState, setGameState } = useContext(QuizContext);
+    const { format, setFormat } = useContext(QuizContext);
+    const { showNumbers, setShowNumbers } = useContext(QuizContext);
 
-    const d = new Date();
-    var minutes;
+    const handleChangeFormat = (event) => {
+        console.log(event.target.value);
+        setFormat(event.target.value);
+    }
+
+    const handleChangeShowNumbers = (event) => {
+        console.log(event.target.value);
+        setShowNumbers(event.target.value);
+    }
 
     // useEffect(() => {
     //     setQuestions(questionsArray);
@@ -33,7 +41,15 @@ const Main = () => {
          </a>
        </header>
         <div className="terminal-wrapper fadeIn">
-            <button onClick={() => { setGameState("quiz"); }} className="fadeIn delay-0_3 startBtn button-transition">Start</button>
+            <select onChange={handleChangeFormat}>
+                <option selected value="12">12h</option>
+                <option value="24">24h</option>
+            </select>
+            <select onChange={handleChangeShowNumbers}>
+                <option selected value="true">Affichage des chiffres</option>
+                <option value="false">Masquer les chiffres</option>
+            </select>
+            <button onClick={() => { setGameState("quiz"); }} className="startBtn button-transition">Démarrer</button>
         </div>
     </div>
 }

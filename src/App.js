@@ -8,15 +8,15 @@ import './App.css';
 
 const App = () => {
 
-  {/* States */}
-  const [counter, setCounter] = useState(240);
+  const [counter, setCounter] = useState(3);
   const [questions, setQuestions] = useState();
+  const [format, setFormat] = useState();
+  const [showNumbers, setShowNumbers] = useState();
   const [gameState, setGameState] = useState("main");
   const [score, setScore] = useState(0);
 
-  {/* When we change gameState - render different component */}
   return <div className="App" id="app">
-    <QuizContext.Provider value={{gameState, setGameState, score, setScore, questions, setQuestions, counter, setCounter}}>
+    <QuizContext.Provider value={{gameState, setGameState, score, setScore, questions, setQuestions, format, setFormat, showNumbers, setShowNumbers, counter, setCounter}}>
       {gameState === "main" && <Main/>}
       {gameState === "quiz" && <Quiz/>}
       {gameState === "end" && <End/>}
