@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
 
-  const [counter, setCounter] = useState(3);
+  const [counter, setCounter] = useState(60);
   const [questions, setQuestions] = useState();
   const [format, setFormat] = useState();
   const [showNumbers, setShowNumbers] = useState();
