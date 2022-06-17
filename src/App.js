@@ -11,7 +11,8 @@ function App() {
 
   function clock() {
     let date = new Date();
-    let hours = ((date.getHours() + 11) % 12 + 1);
+    let hours = ((date.getHours() + 11) % 12 + 1) + (date.getMinutes()/60);
+    console.log(hours)
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let hour = hours * 30;
@@ -25,15 +26,15 @@ function App() {
 
   function bestClock() {
     let date = new Date();
-    let hours = ((date.getHours() + 23) % 24 + 1);
+    let hours = ((date.getHours() + 23) % 24 + 1) + (date.getMinutes()/60);
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
-    console.log(hours)
-    let bestHour = hours * 15 + 180;
+    // console.log(hours)
+    let hour = hours * 15 + 180;
     let minute = minutes * 6;
     let second = seconds * 6;
 
-    document.getElementById('best-heure').style.transform = `rotate(${bestHour}deg)`;
+    document.getElementById('best-heure').style.transform = `rotate(${hour}deg)`;
     document.getElementById('best-minute').style.transform = `rotate(${minute}deg)`;
     document.getElementById('best-seconde').style.transform = `rotate(${second}deg)`;
   }
