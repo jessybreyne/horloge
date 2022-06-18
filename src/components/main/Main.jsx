@@ -35,14 +35,14 @@ const Main = () => {
                 <div className='card-group'>
                     <div className='card bg-format'>
                         <h2>Format de l'horloge</h2>
-                        <select onChange={handleChangeFormat}>
+                        <select value={format} onChange={handleChangeFormat}>
                             <option selected value="12">12h</option>
                             <option value="24">24h</option>
                         </select>
                     </div>
                     <div className='card bg-numbers'>
                         <h2>Affichage des indexes sur l'horloge</h2>
-                        <select onChange={handleChangeShowNumbers}>
+                        <select value={showNumbers} onChange={handleChangeShowNumbers}>
                             <option selected value="true">Affichage des chiffres</option>
                             <option value="false">Masquer les chiffres</option>
                         </select>

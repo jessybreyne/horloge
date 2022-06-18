@@ -8,10 +8,10 @@ import './App.css';
 
 const App = () => {
 
-  const [counter, setCounter] = useState(6000);
+  const [counter, setCounter] = useState(60);
   const [questions, setQuestions] = useState();
-  const [format, setFormat] = useState();
-  const [showNumbers, setShowNumbers] = useState();
+  const [format, setFormat] = useState(12);
+  const [showNumbers, setShowNumbers] = useState("true");
   const [night, setNight] = useState("");
   const [gameState, setGameState] = useState("main");
   const [score, setScore] = useState(0);
