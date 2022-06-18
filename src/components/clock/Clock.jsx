@@ -23,7 +23,7 @@ const Clock = () => {
     // useEffect(() => {
     //     setQuestions(questionsArray);
     // })
-    console.log(format)
+    // console.log(format)
 
     if (parseInt(format) === 24) {
         return (
