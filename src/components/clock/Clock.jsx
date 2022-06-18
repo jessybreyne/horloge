@@ -1,18 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { QuizContext } from '../../helpers/Contexts';
 
 import './Clock.css';
 
 const Clock = () => {
 
-    const { format, setFormat } = useContext(QuizContext);
-    const { showNumbers, setShowNumbers } = useContext(QuizContext);
+    const { format } = useContext(QuizContext);
+    const { showNumbers } = useContext(QuizContext);
 
     if (parseInt(format) === 24) {
         if (showNumbers === "true") {
             return (
-                <div class="clock fadeIn">
-                    <div class="wrap">
+                <div className="clock fadeIn">
+                    <div className="wrap">
                         <span id="heure"></span>
                         <span id="minute"></span>
                         <span className="dot"></span>
@@ -57,8 +57,8 @@ const Clock = () => {
             )
         } else {
             return (
-                <div class="clock fadeIn">
-                    <div class="wrap">
+                <div className="clock fadeIn">
+                    <div className="wrap">
                         <span id="heure"></span>
                         <span id="minute"></span>
                         <span className="dot"></span>
@@ -105,8 +105,8 @@ const Clock = () => {
     } else {
         if (showNumbers === "true") {
             return (
-                <div class="clock fadeIn">
-                    <div class="wrap">
+                <div className="clock fadeIn">
+                    <div className="wrap">
                         <span id="heure"></span>
                         <span id="minute"></span>
                         <span className="dot"></span>
@@ -139,8 +139,8 @@ const Clock = () => {
             )
         } else {
             return (
-                <div class="clock fadeIn">
-                    <div class="wrap">
+                <div className="clock fadeIn">
+                    <div className="wrap">
                         <span id="heure"></span>
                         <span id="minute"></span>
                         <span className="dot"></span>

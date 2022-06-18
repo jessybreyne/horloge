@@ -7,18 +7,14 @@ import { BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-
 import "./Quiz.css";
-
 
 const Quiz = () => {
 
-    const { questions, setQuestions } = useContext(QuizContext);
-    const { gameState, setGameState } = useContext(QuizContext);
+    const { setGameState } = useContext(QuizContext);
     const { counter, setCounter } = useContext(QuizContext);
-    const { format, setFormat } = useContext(QuizContext);
+    const { format } = useContext(QuizContext);
     const { night, setNight } = useContext(QuizContext);
-    const { showNumbers, setShowNumbers } = useContext(QuizContext);
     const { score, setScore } = useContext(QuizContext);
 
     const [question, setQuestion] = useState("");
@@ -71,7 +67,7 @@ const Quiz = () => {
         event.preventDefault();
         setAnswer(event.target.value);
 
-        console.log(convertTime(question, { convertTo: '24-hour' }), convertTime(answer, { convertTo: '24-hour' }))
+        // console.log(convertTime(question, { convertTo: '24-hour' }), convertTime(answer, { convertTo: '24-hour' }))
         let question_text = convertTime(question, { convertTo: '24-hour' });
         let answer_text = convertTime(answer, { convertTo: '24-hour' });
 
@@ -80,19 +76,11 @@ const Quiz = () => {
         let answer_hour = answer_text.slice(0,2);
         let answer_minutes = answer_text.slice(3,5);
 
-        var date1 = new Date(2000, 0, 1,  question_hour, question_minutes); // 9:00 AM
-        var date2 = new Date(2000, 0, 1, answer_hour, answer_minutes); // 5:00 PM
-
-        // the following is to handle cases where the times are on the opposite side of
-        // midnight e.g. when you want to get the difference between 9:00 PM and 5:00 AM
-
-        // if (date2 < date1) {
-        //     date2.setDate(date2.getDate() + 1);
-        // }
+        var date1 = new Date(2000, 0, 1,  question_hour, question_minutes); 
+        var date2 = new Date(2000, 0, 1, answer_hour, answer_minutes);
 
         var diff = date2 - date1;
         let diff_minutes = Math.abs( ((diff/1000)/60) ) 
-
 
         if (diff_minutes < 4) {
             setAnswer("");
@@ -133,7 +121,7 @@ const Quiz = () => {
             setGameState("end");
         }
         return () => clearInterval(timer);
-    }, [counter])
+    }, [counter, setCounter, setGameState])
 
     useEffect(() => {
         if (!question) nextQuestion()

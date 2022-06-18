@@ -4,9 +4,9 @@ import { QuizContext } from '../../helpers/Contexts';
 import './End.css';
 
 const End = () => {
-  const { gameState, setGameState } = useContext(QuizContext);
+  const { setGameState } = useContext(QuizContext);
   const { score, setScore } = useContext(QuizContext);
-  const { counter, setCounter } = useContext(QuizContext);
+  const { setCounter } = useContext(QuizContext);
 
   //Try again - show main screen, set score back to 0, set counter back to 240 seconds
   const backOnMain = () => {
