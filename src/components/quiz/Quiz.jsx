@@ -2,9 +2,14 @@ import React, { useState, useContext, useEffect } from 'react';
 import { QuizContext } from '../../helpers/Contexts';
 import Clock from '../clock/Clock';
 import Cleave from "cleave.js/react";
+import convertTime from 'convertible-js';
+import { BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./Quiz.css";
+
 
 const Quiz = () => {
 
@@ -12,11 +17,25 @@ const Quiz = () => {
     const { gameState, setGameState } = useContext(QuizContext);
     const { counter, setCounter } = useContext(QuizContext);
     const { format, setFormat } = useContext(QuizContext);
+    const { night, setNight } = useContext(QuizContext);
     const { showNumbers, setShowNumbers } = useContext(QuizContext);
     const { score, setScore } = useContext(QuizContext);
 
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
+
+    const [colorText, setColorText] = useState("");
+    const [colorBg, setColorBg] = useState("");
+
+    let styleNight = {
+        fontSize: '2rem',
+        fontWeight: 600,
+        color: colorText,
+    };
+
+    let styleBg = {
+        backgroundColor: colorBg,
+    };
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -26,7 +45,18 @@ const Quiz = () => {
         let hours = getRandomInt(24)
         let minutes = getRandomInt(60)
         setQuestion(hours + ":" + minutes)
+        if (hours > 12) {
+            setNight('pm');
+            setColorText("black");
+            setColorBg("#dfb900");
+        } else {
+            setNight('am');
+            setColorText("white");
+            setColorBg("#002872");
+
+        }
         let hour;
+        hours += minutes / 60;
         let minute = minutes * 6;
         if (parseInt(format) === 24) {
             hour = hours * 15 + 180;
@@ -37,17 +67,63 @@ const Quiz = () => {
         document.getElementById('minute').style.transform = `rotate(${minute}deg)`;
     }
 
-    const handleChangeAnswer = (event) => {
-        console.log(event.target.value);
+    const handleSubmitAnswer = (event) => {
+        event.preventDefault();
         setAnswer(event.target.value);
-        console.log(question, answer);
 
-        if (question == answer) {
+        console.log(convertTime(question, { convertTo: '24-hour' }), convertTime(answer, { convertTo: '24-hour' }))
+        let question_text = convertTime(question, { convertTo: '24-hour' });
+        let answer_text = convertTime(answer, { convertTo: '24-hour' });
+
+        let question_hour = question_text.slice(0,2);
+        let question_minutes = question_text.slice(3,5);
+        let answer_hour = answer_text.slice(0,2);
+        let answer_minutes = answer_text.slice(3,5);
+
+        var date1 = new Date(2000, 0, 1,  question_hour, question_minutes); // 9:00 AM
+        var date2 = new Date(2000, 0, 1, answer_hour, answer_minutes); // 5:00 PM
+
+        // the following is to handle cases where the times are on the opposite side of
+        // midnight e.g. when you want to get the difference between 9:00 PM and 5:00 AM
+
+        // if (date2 < date1) {
+        //     date2.setDate(date2.getDate() + 1);
+        // }
+
+        var diff = date2 - date1;
+        let diff_minutes = Math.abs( ((diff/1000)/60) ) 
+
+
+        if (diff_minutes < 4) {
+            setAnswer("");
             setScore(score + 1);
             nextQuestion();
-        }
+            toast.success('Félicitations!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        } else {
+            setAnswer("");
+            toast.error('Ce n\'est pas ' + answer, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
 
-        // if()
+        }
+    }
+
+    const handleChangeAnswer = (event) => {
+        setAnswer(event.target.value);
     }
 
     useEffect(() => {
@@ -63,12 +139,10 @@ const Quiz = () => {
         if (!question) nextQuestion()
     });
 
-    //functionality for the next question
     const nextQuestion = () => {
         clock();
     }
 
-    //restart quiz - go back to main screen, set score to 0 and counter to 240 seconds
     const cancel = () => {
         setScore(0);
         setCounter(60);
@@ -76,37 +150,41 @@ const Quiz = () => {
     }
 
     return (
-        <div className="Quiz fadeIn delay-0_3">
-            <header className="App-header">
-                <a
-                    className="App-link"
-                    href="/"
-                    rel="noopener noreferrer"
-                >
-                    Horloge 12-24
-                </a>
-            </header>
-            <div className="terminal-wrapper">
-                <div id="terminal-wrapper" className="terminal-bot">
-                    {/* User score */}
-                    <p className="terminal-prompt mt-25 last-login">Score : {score}</p>
-                    {/* Timer */}
-                    <p className="terminal-prompt last-login">Temps : <span style={{ color: counter < 11 && '#FF5B52' }}>{counter}</span></p>
-                    <Clock />
-                    <label class="input-label" id="fc-label">mm:ss</label>
+        <div id="bg-app" className='fadeIn' style={styleBg}>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <div style={styleNight}>
+                {night === "am" && <BsMoonStarsFill />}
+                {night === "pm" && <BsFillSunFill />}
+                {night}
+            </div>
+            <section className="fadeIn">
+                <p className='text-score'>Score : {score}</p>
+                <p className='text-time'>Temps : <span style={{ color: counter < 11 && '#FF5B52' }}>{counter}</span></p>
+                <Clock />
+                <form onSubmit={handleSubmitAnswer}>
                     <Cleave
                         placeholder="HH:MM"
                         options={{
                             time: true,
                             timePattern: ['h', 'm']
                         }}
-                        onChange={handleChangeAnswer}
                         className="form-field"
+                        value={answer} onChange={handleChangeAnswer}
                     />
-                    {/* Give up button */}
-                    <button id="giveUpBtn" onClick={() => { cancel(); }} className="giveUpBtn giveUp-transition">Quitter le test</button>
-                </div>
-            </div>
+                    <button className="btn btn-start" type="submit">Valider</button>
+                </form>
+                <button className="btn btn-cancel" onClick={() => { cancel(); }}>Quitter le test</button>
+            </section>
         </div>
     )
 }

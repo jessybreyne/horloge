@@ -27,29 +27,41 @@ const Clock = () => {
 
     if (parseInt(format) === 24) {
         return (
-            <div class="clock">
+            <div class="clock fadeIn">
                 <div class="wrap">
                     <span id="heure"></span>
                     <span id="minute"></span>
                     <span class="dot"></span>
                     <div class="sep" id="best-h12">12</div>
+                    <div class="sep" id="best-h13">13</div>
                     <div class="sep" id="best-h14">14</div>
+                    <div class="sep" id="best-h15">15</div>
                     <div class="sep" id="best-h16">16</div>
+                    <div class="sep" id="best-h17">17</div>
                     <div class="sep" id="best-h18">18</div>
+                    <div class="sep" id="best-h19">19</div>
                     <div class="sep" id="best-h20">20</div>
+                    <div class="sep" id="best-h21">21</div>
                     <div class="sep" id="best-h22">22</div>
+                    <div class="sep" id="best-h23">23</div>
                     <div class="sep" id="best-h24">24</div>
+                    <div class="sep" id="best-h1">1</div>
                     <div class="sep" id="best-h2">2</div>
+                    <div class="sep" id="best-h3">3</div>
                     <div class="sep" id="best-h4">4</div>
+                    <div class="sep" id="best-h5">5</div>
                     <div class="sep" id="best-h6">6</div>
+                    <div class="sep" id="best-h7">7</div>
                     <div class="sep" id="best-h8">8</div>
+                    <div class="sep" id="best-h9">9</div>
                     <div class="sep" id="best-h10">10</div>
+                    <div class="sep" id="best-h11">11</div>
                 </div>
             </div>
         )
     } else {
         return (
-            <div class="clock">
+            <div class="clock fadeIn">
                 <div class="wrap">
                     <span id="heure"></span>
                     <span id="minute"></span>

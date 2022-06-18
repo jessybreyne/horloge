@@ -1,3 +1,149 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+#bg-app {
+    background-color: #2a828c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    background-color: #f2e0c9;
+    padding: 2rem;
+    max-width: 1000px;
+    width: 60%;
+    box-shadow: 10px 20px 1px #0d1f36;
+}
+
+.btn {
+    border-radius: 0;
+    color: white;
+    border: none;
+    transition: all 0.4s ease-in-out, padding 0.2s ease-in-out,
+    font-weight 0s linear;
+    box-shadow: 1px 2px 1px #0d1f36;
+    font-family: "Cutive Mono", monospace;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.btn:hover {
+    box-shadow: 5px 5px 1px #0d1f36;
+    cursor: pointer;
+}
+
+.btn-start {
+    background-color: #009419;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.btn-start:hover {
+    background-color: #00b30f;
+}
+
+.btn-cancel {
+    background-color: #940000;
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.btn-cancel:hover {
+    background-color: #d30000;
+}
+
+
+.fadeIn {
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.delay-0_3 {
+    animation-delay: 0.3s;
+}
+
+.delay-0_5 {
+    animation-delay: 0.5s;
+}
+
+.delay-0_7 {
+    animation-delay: 0.7s;
+}
+
+.delay-0_9 {
+    animation-delay: 0.9s;
+}
+
+
+.delay-1_3 {
+    animation-delay: 1.3s;
+}
+
+.delay-2 {
+    animation-delay: 2s;
+}
+
+.delay-2_5 {
+    animation-delay: 2.5s;
+}
+
+
+.delay-3 {
+    animation-delay: 3s;
+}
+
+.delay-3_5 {
+    animation-delay: 3.5s;
+}
+
+.delay-4 {
+    animation-delay: 4s;
+}
+
+.delay-4_5 {
+    animation-delay: 4.5s;
+}
+
+.delay-5 {
+    animation-delay: 5s;
+}
+
+.delay-5_5 {
+    animation-delay: 5.5s;
+}
+
+.delay-10 {
+    animation-delay: 10s;
+}
+
+.delay-10_5 {
+    animation-delay: 10.5s;
 }

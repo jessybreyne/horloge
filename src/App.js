@@ -8,15 +8,16 @@ import './App.css';
 
 const App = () => {
 
-  const [counter, setCounter] = useState(60);
+  const [counter, setCounter] = useState(6000);
   const [questions, setQuestions] = useState();
   const [format, setFormat] = useState();
   const [showNumbers, setShowNumbers] = useState();
+  const [night, setNight] = useState("");
   const [gameState, setGameState] = useState("main");
   const [score, setScore] = useState(0);
 
   return <div className="App" id="app">
-    <QuizContext.Provider value={{gameState, setGameState, score, setScore, questions, setQuestions, format, setFormat, showNumbers, setShowNumbers, counter, setCounter}}>
+    <QuizContext.Provider value={{gameState, setGameState, score, setScore, questions, setQuestions, format, setFormat, showNumbers, setShowNumbers, counter, setCounter, night, setNight}}>
       {gameState === "main" && <Main/>}
       {gameState === "quiz" && <Quiz/>}
       {gameState === "end" && <End/>}
