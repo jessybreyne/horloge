@@ -1,15 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { QuizContext } from '../../helpers/Contexts';
-import { Questions } from "../../helpers/Questions";
 
 import './Main.css';
 
 const Main = () => {
-
-    //Shuffle questions array
-    const shuffled = Questions.sort(() => 0.5 - Math.random());
-    //Take 10 random questions array
-    let questionsArray = shuffled.slice(0, 10);
 
     const { questions, setQuestions } = useContext(QuizContext);
     const { gameState, setGameState } = useContext(QuizContext);
