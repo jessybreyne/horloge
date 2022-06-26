@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Horloge : test de vitesse de lecture
 
 Demo: [https://horloge-speed-test.netlify.app/](https://horloge-speed-test.netlify.app/).
 
